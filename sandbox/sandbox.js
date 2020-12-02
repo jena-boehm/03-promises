@@ -24,3 +24,10 @@ fsPromises.readFile('./read-file.md', 'utf-8')
 fsPromises.writeFile('./write-file.md', 'hello hello')
     .then(() => console.log('done'))
     .catch(err => console.log(err));
+
+
+// Copy a file
+
+fsPromises.copyFile('./read-file.md', './read-file-copy.md')
+    .then(() => console.log('copied'))
+    .catch(() => console.log(err));
