@@ -21,6 +21,6 @@ fsPromises.readFile('./read-file.md', 'utf-8')
 // use fsPromises.writeFile to write a file
 // then console.log "DONE!"
 
-fsPromises.writeFile('../write-file.md', 'hello hello')
+fsPromises.writeFile('./write-file.md', 'hello hello')
     .then(() => console.log('done'))
     .catch(err => console.log(err));
