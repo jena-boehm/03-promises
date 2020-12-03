@@ -9,6 +9,6 @@ describe('copyFile', () => {
         })
         .then(copiedFile => {
             expect(copiedFile).toEqual('copy this, I dare you')
-        })
-    })
-})
+        });
+    });
+});
