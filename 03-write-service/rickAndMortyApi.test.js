@@ -9,7 +9,7 @@ describe('getCharacter', () => {
             status: 'Alive', 
             species: 'Human'
         }
-        
+
         return await getCharacter(id)
         .then(result => {
         expect(result).toEqual(expected)
