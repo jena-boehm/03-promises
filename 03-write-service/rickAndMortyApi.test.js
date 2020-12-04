@@ -1,7 +1,7 @@
 const { getCharacter, getManyCharacters } = require('./rickAndMortyApi.js');
 
 describe('getCharacter', () => {
-    it('should take an id and return a promise that resolves to a character', async() => {
+    it('should take an id and return a promise that resolves to a character', () => {
 
         const id = 1;
         const expected = {
@@ -10,7 +10,7 @@ describe('getCharacter', () => {
             species: 'Human'
         }
 
-        return await getCharacter(id)
+        return getCharacter(id)
         .then(result => {
         expect(result).toEqual(expected)
         });
