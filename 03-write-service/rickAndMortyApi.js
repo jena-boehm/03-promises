@@ -17,9 +17,8 @@ async function getCharacter(id) {
         }
 }
 
-const getManyCharacters  = (ids) => {
-    const result = Promise.all(ids.map(id => getCharacter(id)));
-    return result;
+async function getManyCharacters(ids) {
+    return await Promise.all(ids.map(id => getCharacter(id)));
 };
 
 
