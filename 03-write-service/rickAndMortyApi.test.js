@@ -1,7 +1,15 @@
 const { getCharacter, getManyCharacters } = require('./rickAndMortyApi.js');
+const mockSingleResponse = require('../single-character.json');
+const fetch = require('node-fetch');
+
+jest.mock('node-fetch');
 
 describe('getCharacter', () => {
     it('should take an id and return a promise that resolves to a character', () => {
+
+        fetch.mockResolvedValue({
+            json: () => Promise.resolve(mockSingleResponse)
+        });
 
         const id = 1;
         const expected = {
@@ -21,13 +29,17 @@ describe('getCharacter', () => {
 describe('getManyCharacters', () => {
     it('should fetch many characters', async() => {
 
-        const result = await getManyCharacters([1, 3, 5, 7]);
+        fetch.mockResolvedValue({
+            json: () => Promise.resolve(mockSingleResponse)
+        });
 
+        const ids = [1, 3, 5, 7];
+        const result = await getManyCharacters(ids);
         const expected = [
             { name: 'Rick Sanchez', species: 'Human', status: 'Alive' },
-            { name: 'Summer Smith', species: 'Human', status: 'Alive' },
-            { name: 'Jerry Smith', species: 'Human', status: 'Alive' },
-            { name: 'Abradolf Lincler', species: 'Human', status: 'unknown' }
+            { name: 'Rick Sanchez', species: 'Human', status: 'Alive' },
+            { name: 'Rick Sanchez', species: 'Human', status: 'Alive' },
+            { name: 'Rick Sanchez', species: 'Human', status: 'Alive' }
         ]
 
         expect(result).toEqual(expected)
