@@ -17,4 +17,10 @@ async function getCharacter(id) {
         }
 }
 
-module.exports = { getCharacter };
+const getManyCharacters  = (ids) => {
+    const result = Promise.all(ids.map(id => getCharacter(id)));
+    return result;
+};
+
+
+module.exports = { getCharacter, getManyCharacters };
